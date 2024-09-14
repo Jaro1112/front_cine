@@ -7,6 +7,7 @@ import PeliculaCard from '../components/PeliculaCard'
 import Link from 'next/link'
 
 const ITEMS_PER_PAGE = 6
+const MAX_SEARCH_HISTORY = 5
 
 export default function ListarPeliculas() {
   const [peliculas, setPeliculas] = useState<Pelicula[]>([])
@@ -14,6 +15,7 @@ export default function ListarPeliculas() {
   const [error, setError] = useState<string | null>(null)
   const [busqueda, setBusqueda] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
+  const [searchHistory, setSearchHistory] = useState<string[]>([])
 
   useEffect(() => {
     obtenerPeliculas()
@@ -49,7 +51,18 @@ export default function ListarPeliculas() {
   }
 
   const handleBusquedaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBusqueda(e.target.value)
+    const newBusqueda = e.target.value
+    setBusqueda(newBusqueda)
+    if (newBusqueda.trim() !== '') {
+      setSearchHistory(prevHistory => {
+        const newHistory = [newBusqueda, ...prevHistory.filter(item => item !== newBusqueda)]
+        return newHistory.slice(0, MAX_SEARCH_HISTORY)
+      })
+    }
+  }
+
+  const handleSearchHistoryClick = (searchTerm: string) => {
+    setBusqueda(searchTerm)
   }
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE
@@ -77,6 +90,20 @@ export default function ListarPeliculas() {
           value={busqueda}
           onChange={handleBusquedaChange}
         />
+        {searchHistory.length > 0 && (
+          <div className="mt-2">
+            <small>Búsquedas recientes:</small>
+            {searchHistory.map((term, index) => (
+              <button
+                key={index}
+                className="btn btn-sm btn-outline-secondary me-1 mb-1"
+                onClick={() => handleSearchHistoryClick(term)}
+              >
+                {term}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       {error && <div className="alert alert-danger">{error}</div>}
       <div className="row">
