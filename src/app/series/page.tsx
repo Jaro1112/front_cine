@@ -1,51 +1,40 @@
 "use client";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Serie } from '../types/serie'
-import { serieService } from '../services/serieService'
 import SerieCard from '../components/SerieCard'
 import Link from 'next/link'
+import { serieService } from '../services/serieService'
 
 const ITEMS_PER_PAGE = 6
 
 export default function ListarSeries() {
   const [series, setSeries] = useState<Serie[]>([])
   const [seriesFiltradas, setSeriesFiltradas] = useState<Serie[]>([])
-  const [error, setError] = useState<string | null>(null)
   const [busqueda, setBusqueda] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     obtenerSeries()
   }, [])
 
-  useEffect(() => {
-    filtrarSeries()
-  }, [busqueda, series])
-
-  const obtenerSeries = async () => {
-    try {
-      const data = await serieService.obtenerSeries()
-      setSeries(data)
-      setSeriesFiltradas(data)
-    } catch (error) {
-      console.error('Error al obtener las series:', error)
-      setError('Error al cargar las series. Por favor, intenta de nuevo más tarde.')
-    }
-  }
-
-  const handleDelete = (id: number) => {
-    const nuevasSeries = series.filter(serie => serie.id !== id)
-    setSeries(nuevasSeries)
-    setSeriesFiltradas(nuevasSeries)
-  }
-
-  const filtrarSeries = () => {
+  const filtrarSeries = useCallback(() => {
     const filtradas = series.filter(serie =>
       serie.nombreSerie.toLowerCase().includes(busqueda.toLowerCase())
     )
     setSeriesFiltradas(filtradas)
     setCurrentPage(1)
+  }, [busqueda, series])
+
+  useEffect(() => {
+    filtrarSeries()
+  }, [busqueda, series, filtrarSeries])
+
+  const handleDelete = (id: number) => {
+    const nuevasSeries = series.filter(serie => serie.id !== id)
+    setSeries(nuevasSeries)
+    setSeriesFiltradas(nuevasSeries)
   }
 
   const handleBusquedaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +48,18 @@ export default function ListarSeries() {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
+  }
+
+  const obtenerSeries = async () => {
+    try {
+      const data = await serieService.obtenerSeries()
+      setSeries(data)
+      setSeriesFiltradas(data)
+      setError(null)
+    } catch (error) {
+      console.error('Error al obtener las series:', error)
+      setError('Hubo un error al cargar las series. Por favor, intenta de nuevo.')
+    }
   }
 
   return (
