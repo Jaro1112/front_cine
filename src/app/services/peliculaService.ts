@@ -20,8 +20,10 @@ export const peliculaService = {
   },
 
   editarPelicula: async (pelicula: Pelicula, id: number): Promise<Pelicula> => {
-    const response = await axios.put<Pelicula>(`${API_URL}api/peliculas/editar-pelicula/${id}/`, pelicula)
-    return response.data
+    console.log('Enviando solicitud de edición:', pelicula, 'ID:', id);
+    const response = await axios.put<Pelicula>(`${API_URL}api/peliculas/editar-pelicula/${id}/`, pelicula);
+    console.log('Respuesta del servidor:', response.data);
+    return response.data;
   },
 
   eliminarPelicula: async (id: number): Promise<void> => {

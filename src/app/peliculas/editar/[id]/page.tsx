@@ -31,13 +31,15 @@ export default function EditarPelicula({ params }: { params: { id: string } }) {
 
   const handleSubmit = async (peliculaActualizada: Pelicula) => {
     try {
-      await peliculaService.editarPelicula(peliculaActualizada, Number(id))
-      router.push('/peliculas')
+      console.log('Película actualizada:', peliculaActualizada);
+      const respuesta = await peliculaService.editarPelicula(peliculaActualizada, Number(id));
+      console.log('Respuesta del servidor:', respuesta);
+      router.push('/peliculas');
     } catch (error) {
-      setError('Error al actualizar la película')
-      console.error('Error al actualizar la película:', error)
+      setError('Error al actualizar la película');
+      console.error('Error al actualizar la película:', error);
       if (axios.isAxiosError(error) && error.response) {
-        console.error('Respuesta del servidor:', error.response.data)
+        console.error('Respuesta del servidor:', error.response.data);
       }
     }
   }
