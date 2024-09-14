@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { Pelicula } from '../types/pelicula'
 import { peliculaService } from '../services/peliculaService'
 
@@ -12,8 +11,6 @@ interface PeliculaCardProps {
 
 export default function PeliculaCard({ pelicula, onDelete }: PeliculaCardProps) {
   const [isDeleting, setIsDeleting] = useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const router = useRouter()
 
   const handleDelete = async () => {
     if (confirm('¿Estás seguro de que quieres eliminar esta película?')) {
