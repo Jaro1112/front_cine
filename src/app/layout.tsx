@@ -1,6 +1,7 @@
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar'
+import StarryBackground from './components/StarryBackground'
 import Script from 'next/script'
 
 export default function RootLayout({
@@ -15,6 +16,7 @@ export default function RootLayout({
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" />
       </head>
       <body className="bg-custom">
+        <StarryBackground />
         <Navbar />
         <main className="container mt-4">
           {children}
