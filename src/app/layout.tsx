@@ -12,7 +12,7 @@ export default function RootLayout({
       <head>
         <title>CineJaro</title>
       </head>
-      <body>
+      <body className="bg-custom">
         <Navbar />
         <main className="container mt-4">
           {children}
