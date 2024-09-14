@@ -24,8 +24,8 @@ h3 {
   color: #ffffff;
 }
 
-.card {
-  background-color: #051229;
+.container-fluid .row .card {
+  background-color: #051229 !important;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -94,16 +94,16 @@ h3 strong {
 }
 
 .card-title {
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: bold;
 }
 
 .card-text {
-  color: #cccccc;
+  color: #cccccc !important;
 }
 
 .card-text strong {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .btn-primary {
