@@ -1,7 +1,19 @@
-body {
+html, body {
   background-color: #071e3d;
-  color: #333;
+  color: #ffffff;
   font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h3 {
@@ -34,8 +46,4 @@ h3 {
   color: #007bff;
   text-align: center;
   font-size: 2em;
-}
-
-html, body {
-  min-height: 100vh;
 }

@@ -11,6 +11,12 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <title>CineJaro</title>
+        <style>{`
+          body {
+            background-color: #071e3d;
+            color: #ffffff;
+          }
+        `}</style>
       </head>
       <body>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
