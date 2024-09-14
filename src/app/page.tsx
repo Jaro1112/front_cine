@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react'
 import { Pelicula } from './types/pelicula'
 import { Serie } from './types/serie'

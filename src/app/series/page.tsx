@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from 'react'
 import { Serie } from '../types/serie'
 import { serieService } from '../services/serieService'
