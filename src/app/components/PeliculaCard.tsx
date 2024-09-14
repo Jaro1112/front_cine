@@ -31,14 +31,12 @@ export default function PeliculaCard({ pelicula, onDelete }: PeliculaCardProps) 
     <div className="card h-100">
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{pelicula.nombrePelicula}</h5>
-        <div className="image-container flex-grow-1">
+        <div className="image-container flex-grow-1" style={{ position: 'relative', width: '100%', height: '400px' }}>
           <Image 
             src={pelicula.img} 
             alt={`Imagen de ${pelicula.nombrePelicula}`}
-            width={300}
-            height={400}
-            layout="responsive"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
           />
         </div>
         <p className="card-text"><strong>Duración:</strong> {pelicula.duracion}</p>
