@@ -1,24 +1,35 @@
 "use client";
 
-import { useState, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { peliculaService } from '../../services/peliculaService'
 import PeliculaForm from '../../components/PeliculaForm'
 import { Pelicula } from '../../types/pelicula'
+import Link from 'next/link'
 
 export default function CrearPelicula() {
-  const router = useRouter()
   const [error, setError] = useState<string | null>(null)
+  const [peliculaCreada, setPeliculaCreada] = useState(false)
 
-  const handleSubmit = useCallback(async (pelicula: Pelicula) => {
+  const handleSubmit = async (pelicula: Pelicula) => {
     try {
       await peliculaService.crearPelicula(pelicula)
-      router.push('/peliculas')
+      setPeliculaCreada(true)
     } catch (error) {
       setError('Error al crear la película')
       console.error('Error al crear la película:', error)
     }
-  }, [router])
+  }
+
+  if (peliculaCreada) {
+    return (
+      <div className="container">
+        <h2 className="text-center my-4">Película creada con éxito</h2>
+        <Link href="/peliculas" className="btn btn-primary">
+          Volver a la lista de películas
+        </Link>
+      </div>
+    )
+  }
 
   return (
     <div className="container">
