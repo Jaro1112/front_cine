@@ -9,6 +9,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <title>CineJaro</title>
+      </head>
       <body>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
