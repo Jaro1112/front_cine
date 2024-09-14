@@ -25,7 +25,7 @@ h3 {
 }
 
 .card {
-  background-color: rgba(13, 40, 80, 0.7);
+  background-color: rgba(7, 30, 61, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -97,3 +97,28 @@ h3 strong {
   color: #ffffff;
   font-weight: bold;
 }
+
+.card-text {
+  color: #cccccc;
+}
+
+.btn-primary {
+  background-color: #1e90ff;
+  border-color: #1e90ff;
+}
+
+.btn-primary:hover {
+  background-color: #187bcd;
+  border-color: #187bcd;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #bd2130;
+  border-color: #bd2130;
+}
+
