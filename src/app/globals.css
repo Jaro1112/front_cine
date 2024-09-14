@@ -25,13 +25,13 @@ h3 {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(13, 40, 80, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #e0e0e0;
 }
 
 .card:hover {
@@ -91,4 +91,9 @@ h3 {
 
 h3 strong {
   color: #ffffff;
+}
+
+.card-title {
+  color: #ffffff;
+  font-weight: bold;
 }
