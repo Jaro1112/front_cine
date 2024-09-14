@@ -10,21 +10,21 @@ export const serieService = {
   },
 
   crearSerie: async (serie: Serie): Promise<Serie> => {
-    const response = await axios.post<Serie>(`${API_URL}crear-serie/`, serie)
+    const response = await axios.post<Serie>(`${API_URL}api/series/crear-serie/`, serie)
     return response.data
   },
 
   detallesSerie: async (id: number): Promise<Serie> => {
-    const response = await axios.get<Serie>(`${API_URL}serie/${id}`)
+    const response = await axios.get<Serie>(`${API_URL}api/series/${id}`)
     return response.data
   },
 
   editarSerie: async (serie: Serie, id: number): Promise<Serie> => {
-    const response = await axios.put<Serie>(`${API_URL}editar-serie/${id}/`, serie)
+    const response = await axios.put<Serie>(`${API_URL}api/series/editar-serie/${id}/`, serie)
     return response.data
   },
 
   eliminarSerie: async (id: number): Promise<void> => {
-    await axios.delete(`${API_URL}eliminar-serie/${id}`)
+    await axios.delete(`${API_URL}api/series/eliminar-serie/${id}`)
   }
 }
