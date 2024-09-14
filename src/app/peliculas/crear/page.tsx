@@ -24,9 +24,11 @@ export default function CrearPelicula() {
     return (
       <div className="container">
         <h2 className="text-center my-4">Película creada con éxito</h2>
-        <Link href="/peliculas" className="btn btn-primary">
-          Volver a la lista de películas
-        </Link>
+        <div className="text-center">
+          <Link href="/peliculas" className="btn btn-primary">
+            Volver a la lista de películas
+          </Link>
+        </div>
       </div>
     )
   }
