@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { peliculaService } from '../../../services/peliculaService'
 import PeliculaForm from '../../../components/PeliculaForm'
 import { Pelicula } from '../../../types/pelicula'
 
-export default function EditarPelicula() {
+export default function EditarPelicula({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const { id } = router.query
+  const { id } = params
   const [pelicula, setPelicula] = useState<Pelicula | null>(null)
   const [error, setError] = useState<string | null>(null)
 

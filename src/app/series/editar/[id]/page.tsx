@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { serieService } from '../../../services/serieService'
 import SerieForm from '../../../components/SerieForm'
 import { Serie } from '../../../types/serie'
 
-export default function EditarSerie() {
+export default function EditarSerie({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const { id } = router.query
+  const { id } = params
   const [serie, setSerie] = useState<Serie | null>(null)
   const [error, setError] = useState<string | null>(null)
 

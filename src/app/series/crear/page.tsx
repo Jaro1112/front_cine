@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { serieService } from '../../services/serieService'
 import SerieForm from '../../components/SerieForm'
 import { Serie } from '../../types/serie'
