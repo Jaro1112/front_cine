@@ -1,8 +1,10 @@
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar'
-import StarryBackground from './components/StarryBackground'
+import dynamic from 'next/dynamic'
 import Script from 'next/script'
+
+const StarryBackground = dynamic(() => import('./components/StarryBackground'), { ssr: false })
 
 export default function RootLayout({
   children,
