@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Serie } from '../types/serie'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://back-cine-33wa.onrender.com/';
 
 export const serieService = {
   obtenerSeries: async (): Promise<Serie[]> => {
