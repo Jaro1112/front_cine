@@ -11,6 +11,8 @@ import SerieCard from './components/SerieCard'
 export default function Home() {
   const [peliculas, setPeliculas] = useState<Pelicula[]>([])
   const [series, setSeries] = useState<Serie[]>([])
+  //
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     obtenerPeliculas()
@@ -21,8 +23,11 @@ export default function Home() {
     try {
       const data = await peliculaService.obtenerPeliculas()
       setPeliculas(data)
+      setError(null)
     } catch (error) {
       console.error('Error al obtener las películas:', error)
+      setError('Error al cargar las películas. Por favor, intenta de nuevo más tarde.')
+      setPeliculas([])
     }
   }
 
@@ -46,6 +51,8 @@ export default function Home() {
   return (
     <div className="container-fluid">
       <h3 className="text-center my-4"><strong>Home - Películas y Series</strong></h3>
+
+      {error && <div className="alert alert-danger">{error}</div>}
 
       <div className="section-title">Películas</div>
       <div className="row">
