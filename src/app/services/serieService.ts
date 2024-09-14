@@ -10,7 +10,7 @@ export const serieService = {
   },
 
   crearSerie: async (serie: Serie): Promise<Serie> => {
-    const response = await axios.post<Serie>(`${API_URL}api/series/crear-serie/`, serie)
+    const response = await axios.post<Serie>(`${API_URL}api/series/crear-serie`, serie)
     return response.data
   },
 
@@ -20,7 +20,7 @@ export const serieService = {
   },
 
   editarSerie: async (serie: Serie, id: number): Promise<Serie> => {
-    const response = await axios.put<Serie>(`${API_URL}api/series/editar-serie/${id}/`, serie)
+    const response = await axios.put<Serie>(`${API_URL}api/series/editar-serie/${id}`, serie)
     return response.data
   },
 
