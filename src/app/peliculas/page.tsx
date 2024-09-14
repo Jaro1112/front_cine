@@ -5,6 +5,7 @@ import { Pelicula } from '../types/pelicula'
 import { peliculaService } from '../services/peliculaService'
 import PeliculaCard from '../components/PeliculaCard'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const ITEMS_PER_PAGE = 6
 
@@ -82,6 +83,13 @@ export default function ListarPeliculas() {
       <div className="row">
         {currentItems.map((pelicula) => (
           <div key={pelicula.id} className="col-md-4 mb-4">
+            <Image 
+              src={pelicula.img} 
+              alt={`Imagen de ${pelicula.nombrePelicula}`}
+              width={500}
+              height={750}
+              layout="responsive"
+            />
             <PeliculaCard pelicula={pelicula} onDelete={handleDelete} />
           </div>
         ))}
