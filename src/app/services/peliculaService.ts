@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Pelicula } from '../types/pelicula'
 
-const API_URL = 'https://mycineavg-diego-guerrero.onrender.com/api/peliculas/'
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const peliculaService = {
   obtenerPeliculas: async (): Promise<Pelicula[]> => {
