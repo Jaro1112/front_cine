@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { peliculaService } from '../../../services/peliculaService'
@@ -35,6 +36,9 @@ export default function EditarPelicula({ params }: { params: { id: string } }) {
     } catch (error) {
       setError('Error al actualizar la película')
       console.error('Error al actualizar la película:', error)
+      if (axios.isAxiosError(error) && error.response) {
+        console.error('Respuesta del servidor:', error.response.data)
+      }
     }
   }
 
