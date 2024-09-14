@@ -5,7 +5,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://back-cine-33wa.onren
 
 export const serieService = {
   obtenerSeries: async (): Promise<Serie[]> => {
-    const response = await axios.get<Serie[]>(`${API_URL}series/`)
+    const response = await axios.get<Serie[]>(`${API_URL}api/series`)
     return response.data
   },
 
