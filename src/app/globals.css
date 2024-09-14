@@ -47,3 +47,16 @@ h3 {
   text-align: center;
   font-size: 2em;
 }
+
+.navbar {
+  background-color: #05152d !important;
+}
+
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-brand {
+  color: #a0a0a0 !important;
+}
+
+h3, .section-title {
+  color: #a0a0a0;
+}
