@@ -10,8 +10,17 @@ import SerieCard from './components/SerieCard'
 
 export default function Home() {
   const [peliculas, setPeliculas] = useState<Pelicula[]>([])
-  const [series, setSeries] = useState<Serie[]>([])
   //
+   return (
+      <List
+        items={series}
+        renderItem={(serie) => (
+          <SerieCard serie={serie} onDelete={handleDeleteSerie} />
+        )}
+      />
+    </div>
+  )
+
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
