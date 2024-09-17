@@ -1,3 +1,21 @@
+:root {
+  --background-dark: #071e3d;
+  --background-light: #0cb7f2;
+  --text-dark: #ffffff;
+  --text-light: #000000;
+}
+
+body {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
 html, body {
   background-color: #071e3d;
   color: #ffffff;

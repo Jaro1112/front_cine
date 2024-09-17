@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
+import { ThemeProvider } from './contexts/ThemeContext'
+import ThemeToggle from './components/ThemeToggle'
 
 const StarryBackground = dynamic(() => import('./components/StarryBackground'), { ssr: false })
 
@@ -17,13 +19,14 @@ export default function RootLayout({
         <title>CineJaro</title>
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" />
       </head>
-      <body className="bg-custom">
-        <StarryBackground />
-        <Navbar />
-        <main className="container mt-4">
+      <ThemeProvider>
+        <body>
+          <StarryBackground />
+          <Navbar />
+          <ThemeToggle />
           {children}
-        </main>
-      </body>
+        </body>
+      </ThemeProvider>
     </html>
   )
 }
